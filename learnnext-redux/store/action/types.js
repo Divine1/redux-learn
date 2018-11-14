@@ -1,0 +1,3 @@
+export const VALIDATE_EMAIL = "VALIDATE_EMAIL";
+
+export const VALIDATE_JOB_TITLE = "VALIDATE_JOB_TITLE";
