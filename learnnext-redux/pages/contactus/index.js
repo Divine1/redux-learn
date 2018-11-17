@@ -1,10 +1,15 @@
 import {connect} from 'react-redux';
-import {VALIDATE_EMAIL} from '../../store/action/types'
+
+import * as actionCreator from '../../store/action/creator';
 
 class ContactusPage extends React.Component{
 
     constructor(props){
         super(props)
+    }
+    updateEmail = ()=>{
+        let email = "react@microsoft.com";
+        this.props.updateEmail(email);
     }
     render(){
         return(
@@ -12,7 +17,7 @@ class ContactusPage extends React.Component{
                 <h2>ContactusPage</h2>
                 <div>
                     email : {this.props.email}
-                    <button onClick={this.props.updateEmail}>
+                    <button onClick={this.updateEmail}>
                         updateEmail
                     </button>
                 </div>
@@ -28,10 +33,7 @@ const mapStateToProps = state =>{
 }
 const mapDispatchToProps = dispatch => {
     return{
-        updateEmail : () => dispatch({
-            type : VALIDATE_EMAIL,
-            payload : { email : 'divine@gmail.com'}
-        })
+        updateEmail : (email) => dispatch(actionCreator.updateEmail(email))
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(ContactusPage);
